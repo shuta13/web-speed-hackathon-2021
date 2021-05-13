@@ -9,6 +9,8 @@ const PUBLIC_PATH = path.resolve(__dirname, '../public');
 const UPLOAD_PATH = path.resolve(__dirname, '../upload');
 const DIST_PATH = path.resolve(__dirname, '../dist');
 
+const IS_PROD = process.env.NODE_ENV === 'production';
+
 /** @type {import('webpack').Configuration} */
 const config = {
   devServer: {
@@ -20,7 +22,7 @@ const config = {
       '/api': 'http://localhost:3000',
     },
   },
-  devtool: 'inline-source-map',
+  devtool: IS_PROD ? false : 'inline-source-map',
   entry: {
     main: [
       'core-js',
