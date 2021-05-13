@@ -83,6 +83,9 @@ const config = {
       path: false,
     },
   },
+  optimization: {
+    runtimeChunk: 'single',
+  },
 };
 
 module.exports = config;
