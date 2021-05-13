@@ -69,10 +69,10 @@ const config = {
       NODE_ENV: 'development',
     }),
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].css',
+      filename: IS_PROD ? 'styles/[name].[contenthash].css' : 'styles/[name].css',
     }),
     new HtmlWebpackPlugin({
-      inject: false,
+      inject: true,
       template: path.resolve(SRC_PATH, './index.html'),
     }),
   ],
