@@ -8,7 +8,7 @@ import React from 'react';
 
 /** @type {React.VFC<Props>} */
 const InfiniteScroll = ({ children, fetchMore }) => {
-  const prevReachedRef = React.useRef(true);
+  // const prevReachedRef = React.useRef(true);
 
   React.useEffect(() => {
     const handler = () => {
@@ -20,11 +20,11 @@ const InfiniteScroll = ({ children, fetchMore }) => {
       const hasReached = window.innerHeight + Math.ceil(window.scrollY) >= document.body.offsetHeight;
 
       // 画面最下部にスクロールしたタイミングで、登録したハンドラを呼び出す
-      if (hasReached && !prevReachedRef.current) {
+      if (hasReached) {
         fetchMore();
       }
 
-      prevReachedRef.current = hasReached;
+      // prevReachedRef.current = hasReached;
     };
 
     // document.addEventListener('wheel', handler, { passive: false });

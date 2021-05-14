@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const webpack = require('webpack');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const SRC_PATH = path.resolve(__dirname, './src');
 const PUBLIC_PATH = path.resolve(__dirname, '../public');
@@ -70,7 +71,8 @@ const config = {
       NODE_ENV: 'development',
     }),
     new MiniCssExtractPlugin({
-      filename: IS_PROD ? 'styles/[name].[contenthash].css' : 'styles/[name].css',
+      filename: 'styles/[name].css',
+      chunkFilename: 'styles/[id].css',
     }),
     new HtmlWebpackPlugin({
       inject: true,
@@ -89,6 +91,19 @@ const config = {
   },
   optimization: {
     runtimeChunk: 'single',
+    minimizer: [
+      '...',
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: [
+            'default',
+            {
+              discardComments: { removeAll: true },
+            },
+          ],
+        },
+      }),
+    ],
   },
 };
 
