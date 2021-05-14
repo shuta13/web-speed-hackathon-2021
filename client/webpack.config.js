@@ -98,6 +98,12 @@ const config = {
           ],
         },
       }),
+      (compiler) => {
+        const TerserPlugin = require('terser-webpack-plugin');
+        new TerserPlugin({
+          test: /\.(jsx|js)$/i,
+        }).apply(compiler);
+      },
     ],
   },
 };
