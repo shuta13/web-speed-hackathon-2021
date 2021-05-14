@@ -1,3 +1,5 @@
+import http from 'http';
+
 import { app } from './app';
 import { insertSeeds } from './seeds';
 import { sequelize } from './sequelize';
