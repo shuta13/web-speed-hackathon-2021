@@ -4,14 +4,15 @@
   "version": "0.0.1",
   "main": "src/index.js",
   "scripts": {
-    "build": "echo noop",
+    "build": "babel --out-dir ./dist ./src",
     "prestart": "npm-run-all prestart:clean prestart:init",
-    "start": "babel-node --experimental-wasm-threads --experimental-wasm-bulk-memory src/index.js",
+    "start": "node dist/index.js",
     "prestart:clean": "rimraf ../upload",
     "prestart:init": "mkdirp ../upload/images ../upload/movies ../upload/sounds"
   },
   "dependencies": {
-    "@babel/core": "^7.13.16",
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.2",
     "@babel/node": "^7.13.13",
     "@babel/preset-env": "^7.13.15",
     "@ffmpeg/core": "^0.8.5",
