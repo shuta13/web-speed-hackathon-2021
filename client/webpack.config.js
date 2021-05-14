@@ -2,7 +2,6 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const webpack = require('webpack');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
@@ -77,9 +76,6 @@ const config = {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(SRC_PATH, './index.html'),
-    }),
-    new MomentLocalesPlugin({
-      localesToKeep: ['ja'],
     }),
   ],
   resolve: {

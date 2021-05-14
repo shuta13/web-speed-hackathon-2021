@@ -1,8 +1,8 @@
 import FastAverageColor from 'fast-average-color';
-import moment from 'moment';
 import React from 'react';
 
 import { getProfileImagePath } from '../../../utils/get_path';
+import { localizedDayjs } from '../../../utils/localizedDayjs';
 import { FontAwesomeIcon } from '../../foundation/FontAwesomeIcon';
 
 /**
@@ -38,8 +38,8 @@ const UserProfileHeader = ({ user }) => {
             <FontAwesomeIcon iconType="calendar-alt" styleType="regular" />
           </span>
           <span>
-            <time dateTime={moment(user.createdAt).toISOString()}>
-              {moment(user.createdAt).locale('ja').format('LL')}
+            <time dateTime={localizedDayjs(user.createdAt).toISOString()}>
+              {localizedDayjs(user.createdAt).locale('ja').format('LL')}
             </time>
             からサービスを利用しています
           </span>
