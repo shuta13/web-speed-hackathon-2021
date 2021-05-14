@@ -1,5 +1,7 @@
 import React from 'react';
-import { chunk, map, mean } from 'lodash-es';
+import chunk from 'lodash-es/chunk';
+import map from 'lodash-es/map';
+import mean from 'lodash-es/mean';
 
 /**
  * @typedef {object} Props
