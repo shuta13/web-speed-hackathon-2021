@@ -74,7 +74,7 @@ const config = {
       chunkFilename: 'styles/[id].css',
     }),
     new HtmlWebpackPlugin({
-      inject: true,
+      inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
     }),
   ],
@@ -86,7 +86,6 @@ const config = {
     },
   },
   optimization: {
-    runtimeChunk: 'single',
     minimizer: [
       '...',
       new CssMinimizerPlugin({
