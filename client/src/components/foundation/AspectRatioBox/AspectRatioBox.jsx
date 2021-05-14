@@ -16,16 +16,18 @@ const AspectRatioBox = ({ aspectHeight, aspectWidth, children }) => {
   const ref = React.useRef(null);
   const [clientHeight, setClientHeight] = React.useState(0);
 
-  React.useEffect(() => {
-    // clientWidth とアスペクト比から clientHeight を計算する
-    function calcStyle() {
-      const clientWidth = ref.current.clientWidth;
-      setClientHeight((clientWidth / aspectWidth) * aspectHeight);
-    }
+  // clientWidth とアスペクト比から clientHeight を計算する
+  function calcStyle() {
+    const clientWidth = ref.current.clientWidth;
+    setClientHeight((clientWidth / aspectWidth) * aspectHeight);
+  }
 
+  React.useEffect(() => {
     // ウィンドウサイズが変わるたびに計算する
     window.addEventListener('resize', calcStyle, { passive: false });
-    setTimeout(() => calcStyle(), 250);
+
+    // setTimeout(() => calcStyle(), 250);
+    calcStyle();
 
     return () => window.removeEventListener('resize', calcStyle);
   }, []);
